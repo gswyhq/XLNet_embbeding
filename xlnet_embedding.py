@@ -4,10 +4,15 @@ import os
 import codecs
 import numpy as np
 from keras.models import Input, Model
-from keras_bert.layers import Extract
-from keras_xlnet import load_trained_model_from_checkpoint
+# from keras_bert.layers import Extract
 from keras.layers import Add, Embedding, Average, Maximum, Concatenate, Lambda
+
+# https://github.com/CyberZHG/keras-xlnet
+# https://github.com/CyberZHG/keras-transformer-xl
+# https://github.com/CyberZHG/keras-adaptive-softmax.git
+# https://github.com/CyberZHG/keras-trans-mask.git
 from keras_xlnet import Tokenizer, ATTENTION_TYPE_BI, ATTENTION_TYPE_UNI
+from keras_xlnet import load_trained_model_from_checkpoint
 
 
 def init_tokenizer(spiece_model):
@@ -71,10 +76,10 @@ class XlnetEmbedding(object):
         layer_0 = len_layers - len_couche*10
         layer_dict = [layer_0 - 1]
         if self.trainable == False:
-        	layer_dict[0] += 1
-        	sub_diff = 1
+            layer_dict[0] += 1
+            sub_diff = 1
         else:
-        	sub_diff = 2
+            sub_diff = 2
         for i in range(len_couche):
             layer_0 += 10
             layer_dict.append(layer_0 - sub_diff)

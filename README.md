@@ -1,51 +1,58 @@
 ## XLNet Embedding
 
+利用 Xlnet 预训练模型实现中文文本分类，keras 版
 
+## 用法(训练/评估/测试)：
+python3 demo.py
 
-将XLNet作为Embedding的Keras封装，根据需要取出某层或某些层的输出作为特征，并可以在后面搭建自定义的网络（如Fasttext）
+[docker镜像](https://hub.docker.com/r/gswyhq/keras-xlnet-chinese-text-classification)
 
-### Usage：
+## 预训练模型
+预训练中文xlnet
+chinese_xlnet_base_L-12_H-768_A-12.zip
+https://drive.google.com/open?id=1m9t-a4gKimbkP5rqGXXsEAEPhJSZ8tvx
 
-1. 下载 XLNet模型：https://github.com/ymcui/Chinese-PreTrained-XLNet
-
-2. 下载代码，解压XLNet模型至代码目录
-
-3. 准备训练数据并放置在data目录
-
-4. 修改配置和网络
-5. 训练 / 测试 / 预测
-
-### 代码说明
-
-demo默认任务为文本分类，若目标为其他任务需要自行修改demo.py文件
-
-#### 高频修改函数：
-
-get_config():  模型及XLNet配置
-
-process_data(): 修改文本读取、预处理
-
-create_model(): 在XLNet后增加自己的网络结构，默认为fasttext
-
-#### 中频修改函数：
-
-train(): 训练模型，可在这里修改优化器、回调函数等
-
-test(): 加载训练保存的模型进行测试，使用classification_report 和 accuracy_score， 其他任务可自行修改
-
-predict(): 加载模型进行预测，保存到文件中
-
-#### 不建议修改函数：
-
-encode_data(): 对输入进行编码
-
-init()：初始化参数
-
-
+## 项目目录结构
+```shell
+~$ tree
+.
+├── chinese_xlnet_base_L-12_H-768_A-12
+│   ├── spiece.model
+│   ├── xlnet_config.json
+│   ├── xlnet_model.ckpt.data-00000-of-00001
+│   ├── xlnet_model.ckpt.index
+│   └── xlnet_model.ckpt.meta
+├── data
+│   ├── predict.txt
+│   ├── test.txt
+│   └── train.txt
+├── demo.log
+├── demo.py
+├── __init__.py
+├── keras_adaptive_softmax -> https://github.com/CyberZHG/keras-adaptive-softmax/tree/master/keras_adaptive_softmax
+├── keras_transformer_xl -> https://github.com/CyberZHG/keras-transformer-xl/tree/master/keras_transformer_xl
+├── keras_trans_mask -> https://github.com/CyberZHG/keras-trans-mask/tree/master/keras_trans_mask
+├── keras_xlnet -> https://github.com/CyberZHG/keras-xlnet/tree/master/keras_xlnet
+├── keras_embed_sim -> https://github.com/CyberZHG/keras-embed-sim/tree/master/keras_embed_sim
+├── keras_transformer -> https://github.com/CyberZHG/keras-transformer/tree/master/keras_transformer
+├── keras_layer_normalization -> https://github.com/CyberZHG/keras-layer-normalization/tree/master/keras_layer_normalization
+├── keras_multi_head -> https://github.com/CyberZHG/keras-multi-head/tree/master/keras_multi_head
+├── keras_self_attention -> https://github.com/CyberZHG/keras-self-attention/tree/master/keras_self_attention
+├── keras_position_wise_feed_forward -> https://github.com/CyberZHG/keras-position-wise-feed-forward/tree/master/keras_position_wise_feed_forward
+├── keras_pos_embd -> https://github.com/CyberZHG/keras-pos-embd/tree/master/keras_pos_embd
+├── LICENSE
+├── model
+│   ├── embedding_trainable.h5
+│   └── model.h5
+├── README.md
+├── requirements.txt
+└── xlnet_embedding.py
+```
 
 ### 参考/致谢
 
 1.  **Chinese-PreTrained-XLNet** (ymcui) https://github.com/ymcui/Chinese-PreTrained-XLNet
 2.  **keras-xlnet** (CyberZHG)  https://github.com/CyberZHG/keras-xlnet
 3.  **Keras-TextClassification** (yongzhuo) https://github.com/yongzhuo/Keras-TextClassification
-4.  **xlnet** (zihangdai) https://github.com/zihangdai/xlnet
+4.  **xlnet** (zihangdai) https://github.com/zihangdai/xlnethttps://zhuanlan.zhihu.com/p/87981833
+5.  **XLNet_embbeding** (zedom1) https://github.com/zedom1/XLNet_embbeding
