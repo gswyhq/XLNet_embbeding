@@ -7,10 +7,9 @@ python3 demo.py
 
 [docker镜像](https://hub.docker.com/r/gswyhq/keras-xlnet-chinese-text-classification)
 
-## 预训练模型
-预训练中文xlnet
-chinese_xlnet_base_L-12_H-768_A-12.zip
-https://drive.google.com/open?id=1m9t-a4gKimbkP5rqGXXsEAEPhJSZ8tvx
+## 预训练中文xlnet模型来源
+chinese_xlnet_base_L-12_H-768_A-12.zip  
+https://drive.google.com/open?id=1m9t-a4gKimbkP5rqGXXsEAEPhJSZ8tvx  
 
 ## 项目目录结构
 ```shell
